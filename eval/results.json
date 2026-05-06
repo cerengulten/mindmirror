@@ -1,0 +1,114 @@
+{
+  "metrics": {
+    "total_samples": 10,
+    "avg_emotion_overlap": 0.433,
+    "avg_distortion_overlap": 0.7,
+    "valence_accuracy": 1.0,
+    "intensity_accuracy": 0.9,
+    "avg_judge_score": 4.0,
+    "model_used": "llama-3.1-8b-instant via Groq",
+    "embedding_model": "all-MiniLM-L6-v2"
+  },
+  "per_sample": [
+    {
+      "sample_id": 1,
+      "text_preview": "I completely bombed the interview. I always mess up when it ...",
+      "emotion_overlap": 0.0,
+      "distortion_overlap": 0.67,
+      "valence_correct": true,
+      "intensity_in_range": true,
+      "judge_score": 4,
+      "judge_reasoning": "The model accurately identified the main emotions and some cognitive distortions, but missed a key aspect of the emotional content."
+    },
+    {
+      "sample_id": 2,
+      "text_preview": "Had coffee with an old friend today. We laughed a lot. Feeli...",
+      "emotion_overlap": 0.5,
+      "distortion_overlap": 1.0,
+      "valence_correct": true,
+      "intensity_in_range": false,
+      "judge_score": 4,
+      "judge_reasoning": "The model accurately identified the main emotions and valence, but missed the underlying positive effect of laughter on the emotional state."
+    },
+    {
+      "sample_id": 3,
+      "text_preview": "My manager didn't say hi to me this morning. She must be ang...",
+      "emotion_overlap": 0.0,
+      "distortion_overlap": 0.5,
+      "valence_correct": true,
+      "intensity_in_range": true,
+      "judge_score": 4,
+      "judge_reasoning": "The model accurately identified the main emotions and distortions, but may have been overly simplistic in its interpretation."
+    },
+    {
+      "sample_id": 4,
+      "text_preview": "I can't believe I forgot to call mom on her birthday. I'm th...",
+      "emotion_overlap": 0.5,
+      "distortion_overlap": 0.5,
+      "valence_correct": true,
+      "intensity_in_range": true,
+      "judge_score": 4,
+      "judge_reasoning": "The model accurately identified the main emotions and distortions, but missed some nuances in the emotional content."
+    },
+    {
+      "sample_id": 5,
+      "text_preview": "Finished a big project at work. My boss said it was good. I ...",
+      "emotion_overlap": 0.5,
+      "distortion_overlap": 0.0,
+      "valence_correct": true,
+      "intensity_in_range": true,
+      "judge_score": 4,
+      "judge_reasoning": "The model accurately detected the main emotions and provided a coherent summary, but missed the underlying cognitive distortion of 'impostor syndrome' that might be contributing to the 'scared' feeling."
+    },
+    {
+      "sample_id": 6,
+      "text_preview": "I know I should exercise but I haven't in weeks. I'm so lazy...",
+      "emotion_overlap": 0.5,
+      "distortion_overlap": 0.67,
+      "valence_correct": true,
+      "intensity_in_range": true,
+      "judge_score": 4,
+      "judge_reasoning": "The model accurately identified the main emotions and some cognitive distortions, but missed one distortion and didn't provide a clear explanation for the intensity."
+    },
+    {
+      "sample_id": 7,
+      "text_preview": "Presentation went well today! People asked good questions. I...",
+      "emotion_overlap": 0.0,
+      "distortion_overlap": 1.0,
+      "valence_correct": true,
+      "intensity_in_range": true,
+      "judge_score": 4,
+      "judge_reasoning": "The model accurately identified the main emotions and valence, but missed some minor details in the cognitive distortions."
+    },
+    {
+      "sample_id": 8,
+      "text_preview": "My friend seemed distant at dinner. She probably doesn't wan...",
+      "emotion_overlap": 0.33,
+      "distortion_overlap": 0.67,
+      "valence_correct": true,
+      "intensity_in_range": true,
+      "judge_score": 4,
+      "judge_reasoning": "The model accurately identified the main emotions and distortions, but missed some nuances in the cognitive distortions."
+    },
+    {
+      "sample_id": 9,
+      "text_preview": "Normal day. Worked, had lunch, watched TV. Nothing special b...",
+      "emotion_overlap": 1.0,
+      "distortion_overlap": 1.0,
+      "valence_correct": true,
+      "intensity_in_range": true,
+      "judge_score": 4,
+      "judge_reasoning": "The model accurately identified the main emotion as neutral and detected a secondary emotion of satisfaction, but missed the underlying tone of mild disappointment."
+    },
+    {
+      "sample_id": 10,
+      "text_preview": "I feel so overwhelmed. There are too many things to do and I...",
+      "emotion_overlap": 1.0,
+      "distortion_overlap": 1.0,
+      "valence_correct": true,
+      "intensity_in_range": true,
+      "judge_score": 4,
+      "judge_reasoning": "The model accurately identified the main emotions and distortions, but may have missed some nuances in the emotional content."
+    }
+  ]
+}

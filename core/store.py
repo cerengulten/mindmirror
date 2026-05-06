@@ -170,8 +170,8 @@ if __name__ == "__main__":
         entry_id = save_entry(entry_text, analysis)
         print(f"  Saved: {entry_text[:50]}... (id: {entry_id[:8]}...)")
     
-    print("\nSearching for 'feeling like a failure'...")
-    results = search_entries("feeling like a failure", n_results=3)
+    print("\nSearching for 'feeling calm'...")
+    results = search_entries("feeling calm", n_results=3)
     for r in results:
         print(f"  [{r['distance']:.3f}] {r['text'][:60]}...")
     

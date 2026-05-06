@@ -25,28 +25,40 @@ Cognitive distortions you know about: {', '.join(DISTORTIONS)}
 Always respond with valid JSON only. No explanation, no markdown, no extra text.
 """
 
-ANALYSIS_PROMPT = """Analyze this journal entry and return a JSON object with exactly these fields:
+ANALYSIS_PROMPT = """Analyze this journal entry and return a JSON object with exactly these fields.
 
 Entry: "{entry}"
 
+Important rules:
+- Do NOT assume context that is not explicitly stated or strongly implied.
+- Not every entry contains a cognitive distortion. Only include distortions if clearly supported by the language.
+- Some entries reflect growth, coping, or self-awareness. Recognize and prioritize these when present.
+- Do NOT default to anxiety-based or worst-case interpretations unless explicitly supported.
+- If the entry is healthy or reflective, avoid unnecessary correction or advice.
+- Base all analysis strictly on the text.
+
 Return JSON with:
-- "emotions": list of 1-4 emotion words (e.g. ["anxious", "overwhelmed", "hopeless"])
-- "valence": one of "positive", "negative", "mixed", "neutral"  
-- "intensity": integer 1-10 (how emotionally intense is this entry?)
-- "distortions": list of cognitive distortions present (use exact names from the list, empty list if none)
-- "themes": list of 1-3 life themes (e.g. ["work", "relationships", "self-worth"])
-- "summary": one compassionate sentence summarizing the emotional state
+- "emotions": list of 1-4 emotion words
+- "valence": one of "positive", "negative", "mixed", "neutral"
+- "intensity": integer 1-10
+- "distortions": list of cognitive distortions present (empty list if none)
+- "themes": list of 0-3 themes grounded in the text only
+- "summary": 2-3 sentences that:
+    1. reflect the emotional experience in a natural, non-repetitive way
+    2. adapt tone and wording to the specific entry (do not use fixed phrases)
+    3. acknowledge growth or self-awareness ONLY if clearly present
+    4. include gentle perspective ONLY if a clear distortion exists
 
 Example output format:
 {{
-  "emotions": ["anxious", "overwhelmed"],
+  "emotions": ["guilty", "reflective"],
   "valence": "negative",
-  "intensity": 7,
-  "distortions": ["catastrophizing", "mind reading"],
-  "themes": ["work", "self-worth"],
-  "summary": "You seem to be carrying a heavy load of worry about how others perceive you at work."
-}}"""
-
+  "intensity": 6,
+  "distortions": [],
+  "themes": ["relationships", "self-awareness"],
+  "summary": "It sounds like you're feeling some guilt about how you reacted and are reflecting on it thoughtfully. This kind of awareness shows that you care about your relationships and your behavior. Taking a moment to understand what triggered you could help you respond differently next time."
+}}
+"""
 
 def analyze_entry(text: str) -> dict:
     """
