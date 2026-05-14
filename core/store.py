@@ -152,31 +152,25 @@ def get_stats() -> dict:
         "avg_intensity": round(sum(intensities) / len(intensities), 1) if intensities else 0,
     }
 
-
-if __name__ == "__main__":
-    from core.analyzer import analyze_entry
-    
-    # Test: save a few entries and search them
-    test_entries = [
-        "I feel like a failure after today's meeting. Nobody respects my ideas.",
-        "Had a great run this morning. Feeling energized and optimistic.",
-        "Couldn't stop thinking about my exam. What if I fail everything?",
-        "My partner and I had a small argument. I'm worried it means something bad.",
-    ]
-    
-    print("Saving test entries...")
-    for entry_text in test_entries:
-        analysis = analyze_entry(entry_text)
-        entry_id = save_entry(entry_text, analysis)
-        print(f"  Saved: {entry_text[:50]}... (id: {entry_id[:8]}...)")
-    
-    print("\nSearching for 'feeling calm'...")
-    results = search_entries("feeling calm", n_results=3)
-    for r in results:
-        print(f"  [{r['distance']:.3f}] {r['text'][:60]}...")
-    
-    print("\nStats:")
-    stats = get_stats()
-    print(f"  Total entries: {stats['total_entries']}")
-    print(f"  Top emotions: {stats['top_emotions']}")
-    print(f"  Avg intensity: {stats['avg_intensity']}")
+def delete_entry(entry_id: str) -> bool:
+    """
+    Delete a single journal entry by ID.
+    Returns True if deleted, False if not found.
+    """
+    try:
+        collection.delete(ids=[entry_id])
+        return True
+    except Exception:
+        return False
+ 
+ 
+def delete_all_entries() -> int:
+    """
+    Delete all journal entries. Returns count of deleted entries.
+    """
+    count = collection.count()
+    if count > 0:
+        all_ids = collection.get()["ids"]
+        collection.delete(ids=all_ids)
+    return count
+ 

@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from core.analyzer import analyze_entry
-from core.store import save_entry, search_entries, get_recent_entries, get_stats
+from core.store import save_entry, search_entries, get_recent_entries, get_stats, delete_entry, delete_all_entries
 from core.agent import generate_weekly_report
 
 app = FastAPI(
@@ -89,3 +89,18 @@ def weekly_report():
     Analyzes the last 7 days of entries for patterns and generates compassionate insights.
     """
     return generate_weekly_report()
+
+@app.delete("/entry/{entry_id}")
+def remove_entry(entry_id: str):
+    """Delete a specific journal entry by ID."""
+    success = delete_entry(entry_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Entry not found")
+    return {"deleted": entry_id}
+ 
+ 
+@app.delete("/entries/all")
+def remove_all_entries():
+    """Delete all journal entries. Use with caution."""
+    count = delete_all_entries()
+    return {"deleted_count": count, "message": f"Deleted {count} entries"}
