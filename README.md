@@ -28,7 +28,7 @@ Most journaling apps store your words but offer no reflection back. MindMirror c
 ---
 ## Demo
 
-![Demo](assets/mindmirror-demo.mp4)
+![Demo](assets/mindmirrordemo.mp4)
 
 ---
 ## Architecture
